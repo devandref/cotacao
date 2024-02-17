@@ -33,15 +33,14 @@ public class QuotationService {
         if (updateCurrentInfoPrice(currencyPriceInfo)) {
             kafkaEvents.sendNewKafkaEvent(QuotationDTO
                     .builder()
-                    .currencyPrice(new BigDecimal(currencyPriceInfo.getUsdbrl().getBid()))
+                    .currencyPrice(new BigDecimal(currencyPriceInfo.getUSDBRL().getBid()))
                     .localDate(LocalDate.now())
                     .build());
         }
     }
 
     private boolean updateCurrentInfoPrice(CurrencyPriceDTO currencyPriceInfo) {
-        System.out.println(currencyPriceInfo.toString());
-        BigDecimal currentPrice = new BigDecimal(currencyPriceInfo.getUsdbrl().getBid());
+        BigDecimal currentPrice = new BigDecimal(currencyPriceInfo.getUSDBRL().getBid());
         AtomicBoolean updatePrice = new AtomicBoolean(false);
 
         List<QuotationEntity> quotationList = quotationRepository.findAll().list();
@@ -64,8 +63,8 @@ public class QuotationService {
         QuotationEntity quotationEntity = new QuotationEntity();
 
         quotationEntity.setDate(LocalDate.now());
-        quotationEntity.setCurrencyPrice(new BigDecimal(currencyInfo.getUsdbrl().getBid()));
-        quotationEntity.setPctChange(currencyInfo.getUsdbrl().getPctChange());
+        quotationEntity.setCurrencyPrice(new BigDecimal(currencyInfo.getUSDBRL().getBid()));
+        quotationEntity.setPctChange(currencyInfo.getUSDBRL().getPctChange());
         quotationEntity.setPair("USD-BRL");
 
         quotationRepository.persist(quotationEntity);
