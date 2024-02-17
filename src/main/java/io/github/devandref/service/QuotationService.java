@@ -6,10 +6,10 @@ import io.github.devandref.dto.QuotationDTO;
 import io.github.devandref.entity.QuotationEntity;
 import io.github.devandref.message.KafkaEvents;
 import io.github.devandref.repository.QuotationRepository;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -40,6 +40,7 @@ public class QuotationService {
     }
 
     private boolean updateCurrentInfoPrice(CurrencyPriceDTO currencyPriceInfo) {
+        System.out.println(currencyPriceInfo.toString());
         BigDecimal currentPrice = new BigDecimal(currencyPriceInfo.getUsdbrl().getBid());
         AtomicBoolean updatePrice = new AtomicBoolean(false);
 

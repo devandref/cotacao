@@ -1,11 +1,12 @@
 package io.github.devandref.message;
 
 import io.github.devandref.dto.QuotationDTO;
-import jakarta.enterprise.context.ApplicationScoped;
 import org.eclipse.microprofile.reactive.messaging.Channel;
 import org.eclipse.microprofile.reactive.messaging.Emitter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class KafkaEvents {

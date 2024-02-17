@@ -1,16 +1,17 @@
 package io.github.devandref.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.extern.jackson.Jacksonized;
 
-@Data
-@Builder
 @Jacksonized
+@Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class CurrencyPriceDTO {
 
-    private USDBRL usdbrl;
+    public USDBRL USDBRL;
 
 }
+
